@@ -1,0 +1,33 @@
+{
+  "name": "krkrsvchk",
+  "version": "1.0.0",
+  "description": "validate KiriKiri2/KAG3 save data",
+  "license": "UNLICENSED",
+  "author": "kusano",
+  "files": [
+    "bin.js",
+    "lib.js",
+    "package.json",
+    "sample/default.kdt",
+    "sample/macro.kdt",
+    "sample/mode_b.kdt",
+    "sample/mode_c.kdt",
+    "sample/mode_z.kdt",
+    "test/krkrsvchk.js"
+  ],
+  "main": "lib.js",
+  "bin": "bin.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kusano/krkrsvchk.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "zlibjs": "^0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
+}

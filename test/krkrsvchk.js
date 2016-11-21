@@ -137,6 +137,7 @@ describe('krkrsvchk', function() {
     describe('string', function() {
       it('text',                ()=>assert.equal('test', parseText('"test"')));
       it('text escape',         ()=>assert.equal('test\r\n_', parseText('"test\\r\\n\\x5f"')));
+      it('text with type',      ()=>assert.equal('test', parseText('string "test"')));
     });
 
     describe('number', function() {
@@ -146,6 +147,8 @@ describe('krkrsvchk', function() {
       it('small real',          ()=>assert.equal(0.5, parseText('0x1.p-1')));
       it('negative real',       ()=>assert.equal(-1, parseText('-0x1.p0')));
       it('zero',                ()=>assert.equal(0, parseText('0')));
+      it('integer with type',   ()=>assert.equal(123, parseText('int 123')));
+      it('real with type',      ()=>assert.equal(0x1230, parseText('real 0x1.23p12')));
     });
 
     describe('octet', function() {

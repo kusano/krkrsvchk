@@ -34,7 +34,7 @@ function main(file)
 {
   // サムネイルを含むセーブデータは全てエラーにする。
   // KAG3はゲームごとに固定のサイズを読み飛ばすため、ビットマップを解析してビッ
-  // トマップのサイズ分読み飛ばすと、チェックを回避される危険性がある。
+  // トマップのサイズ分を読み飛ばすと、チェックを回避される危険性がある。
   var bitmapTag = [0x42, 0x4d];  // BM
   if (equal(file.subarray(0, bitmapTag.length), bitmapTag))
     throw new Result(THUMBNAIL);
@@ -356,11 +356,11 @@ function parseText(text) {
       c = text[pos];
     }
 
-    if (c=='"') {
+    if (c=='"' || c=='s') {
       if (isConst)
         throw pos;
       return parseString();
-    } else if (/[-0-9.]/.test(c)) {
+    } else if (/[-0-9ir]/.test(c)) {
       if (isConst)
         throw pos;
       return parseNumber();
@@ -412,6 +412,11 @@ function parseText(text) {
 
   // tTJSString::EscapeC
   function parseString() {
+    if (text.substr(pos, 6)=='string') {
+      pos += 6;
+      parseSpace();
+    }
+
     var s = '';
     pos++;
     while (true) {
@@ -454,6 +459,15 @@ function parseText(text) {
   // TJSRealToHexString
   // TJS_tTVInt_to_str
   function parseNumber() {
+    if (text.substr(pos, 3)=='int') {
+      pos += 3;
+      parseSpace();
+    }
+    if (text.substr(pos, 4)=='real') {
+      pos += 4;
+      parseSpace();
+    }
+
     // 生成されるのは、0x1.xxxxpnn形式か、10進整数のみ
     if (text[pos]=='0' && /[^0-9x]/.test(text[pos+1])) {
       pos++;

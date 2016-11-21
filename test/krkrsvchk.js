@@ -149,6 +149,11 @@ describe('krkrsvchk', function() {
       it('zero',                ()=>assert.equal(0, parseText('0')));
       it('integer with type',   ()=>assert.equal(123, parseText('int 123')));
       it('real with type',      ()=>assert.equal(0x1230, parseText('real 0x1.23p12')));
+      it('real NaN',            ()=>assert.ok(isNaN(parseText('NaN'))));
+      it('real -Infinity',      ()=>assert.equal(-Infinity, parseText('-Infinity')));
+      it('real +Infinity',      ()=>assert.equal(+Infinity, parseText('+Infinity')));
+      it('real -0.0',           ()=>assert.equal(-0.0, parseText('-0.0')));
+      it('real +0.0',           ()=>assert.equal(+0.0, parseText('+0.0')));
     });
 
     describe('octet', function() {

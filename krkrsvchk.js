@@ -360,7 +360,7 @@ function parseText(text) {
       if (isConst)
         throw pos;
       return parseString();
-    } else if (/[-0-9ir]/.test(c)) {
+    } else if (/[-+0-9Nir]/.test(c)) {
       if (isConst)
         throw pos;
       return parseNumber();
@@ -468,12 +468,23 @@ function parseText(text) {
       parseSpace();
     }
 
-    // 生成されるのは、0x1.xxxxpnn形式か、10進整数のみ
-    if (text[pos]=='0' && /[^0-9x]/.test(text[pos+1])) {
-      pos++;
-      return 0;
-    }
+    var special = {
+      'NaN':       NaN,
+      '-Infinity': -Infinity,
+      '+Infinity': +Infinity,
+      '-0.0':      -0.0,
+      '+0.0':      +0.0,
+      '0':         0,
+    };
+    for (var name in special)
+      if (text.substr(pos, name.length)==name)
+        if (pos+name.length >= text.length ||
+            /[^0-9x]/.test(text[pos+name.length])) {
+          pos += name.length;
+          return special[name];
+        }
 
+    // これら以外の場合は、0x1.xxxxpnn形式か、10進整数のみ
     var sign = 1;
     if (text[pos]=='-') {
       pos++;

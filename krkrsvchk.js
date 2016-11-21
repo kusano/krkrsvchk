@@ -1,11 +1,11 @@
 var Zlib = require('zlibjs/bin/zlib.min').Zlib;
 
-var OK				= 'OK';
-var BYTE_CODE		= 'BYTE_CODE';
-var FORMAT_ERROR	= 'FORMAT_ERROR';
-var PARSE_ERROR		= 'PARSE_ERROR';
-var MACRO			= 'MACRO';
-var THUMBNAIL		= 'THUMBNAIL';
+var OK              = 'OK';
+var BYTE_CODE       = 'BYTE_CODE';
+var FORMAT_ERROR    = 'FORMAT_ERROR';
+var PARSE_ERROR     = 'PARSE_ERROR';
+var MACRO           = 'MACRO';
+var THUMBNAIL       = 'THUMBNAIL';
 
 function Result(code, detail)
 {

@@ -594,13 +594,13 @@ function parseText(text) {
 }
 
 module.exports = {
-  check,
+  check: check,
 
-  OK,
-  FORMAT_ERROR,
-  BYTE_CODE,
-  PARSE_ERROR,
-  MACRO,
+  OK: OK,
+  FORMAT_ERROR: FORMAT_ERROR,
+  BYTE_CODE: BYTE_CODE,
+  PARSE_ERROR: PARSE_ERROR,
+  MACRO: MACRO,
 
   // for test
   __get__: function(name){return eval(name);},

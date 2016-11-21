@@ -17,7 +17,7 @@ if (result.code==krkrsvchk.OK)
 if (result.code==krkrsvchk.BYTE_CODE)
   console.log(filename+' is byte code.');
 if (result.code==krkrsvchk.FORMAT_ERROR)
-  console.log('Failed to parse. '+filename+' may be original format.');
+  console.log('Failed to parse. '+filename+' may be custom format.');
 if (result.code==krkrsvchk.PARSE_ERROR)
   console.log('Failed to parse. '+filename+' may contain scripts.');
 if (result.code==krkrsvchk.MACRO)

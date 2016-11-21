@@ -6,7 +6,7 @@
   "author": "kusano",
   "files": [
     "bin.js",
-    "lib.js",
+    "krkrsvchk.js",
     "package.json",
     "sample/default.kdt",
     "sample/macro.kdt",
@@ -15,7 +15,7 @@
     "sample/mode_z.kdt",
     "test/krkrsvchk.js"
   ],
-  "main": "lib.js",
+  "main": "krkrsvchk.js",
   "bin": "bin.js",
   "repository": {
     "type": "git",

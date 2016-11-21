@@ -15,6 +15,7 @@ describe('krkrsvchk', function() {
     it('BYTE_CODE',				()=>assert.equal(krkrsvchk.BYTE_CODE, krkrsvchk.check(u8('TJS2100\x00')).code));
     it('PARSE_ERROR',			()=>assert.equal(krkrsvchk.PARSE_ERROR, krkrsvchk.check(u8('%["a"=>1+1]')).code));
     it('MACRO',					()=>assert.equal(krkrsvchk.MACRO, krkrsvchk.check(u8('%["core"=>%["mainConductor"=>%["macros"=>%["a"=>""]]]]')).code));
+    it('THUMBNAIL',				()=>assert.equal(krkrsvchk.THUMBNAIL, krkrsvchk.check(u8('BM')).code));
   });
 
   describe('equal', function() {

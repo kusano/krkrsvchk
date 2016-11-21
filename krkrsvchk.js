@@ -5,6 +5,7 @@ var BYTE_CODE		= 'BYTE_CODE';
 var FORMAT_ERROR	= 'FORMAT_ERROR';
 var PARSE_ERROR		= 'PARSE_ERROR';
 var MACRO			= 'MACRO';
+var THUMBNAIL		= 'THUMBNAIL';
 
 function Result(code, detail)
 {
@@ -31,6 +32,13 @@ function check(file) {
 // TVPExecuteStorage
 function main(file)
 {
+  // サムネイルを含むセーブデータは全てエラーにする。
+  // KAG3はゲームごとに固定のサイズを読み飛ばすため、ビットマップを解析してビッ
+  // トマップのサイズ分読み飛ばすと、チェックを回避される危険性がある。
+  var bitmapTag = [0x42, 0x4d];  // BM
+  if (equal(file.subarray(0, bitmapTag.length), bitmapTag))
+    throw new Result(THUMBNAIL);
+
   var byteCodeTag = [0x54,0x4a,0x53,0x32,0x31,0x30,0x30,0x00];  // TJS2100\0
   if (equal(file.subarray(0, byteCodeTag.length), byteCodeTag))
     throw new Result(BYTE_CODE);
@@ -601,6 +609,7 @@ module.exports = {
   BYTE_CODE: BYTE_CODE,
   PARSE_ERROR: PARSE_ERROR,
   MACRO: MACRO,
+  THUMBNAIL: THUMBNAIL,
 
   // for test
   __get__: function(name){return eval(name);},

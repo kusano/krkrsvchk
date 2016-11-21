@@ -13,6 +13,7 @@
     "sample/mode_b.kdt",
     "sample/mode_c.kdt",
     "sample/mode_z.kdt",
+    "sample/thumbnail.bmp",
     "test/krkrsvchk.js"
   ],
   "main": "krkrsvchk.js",

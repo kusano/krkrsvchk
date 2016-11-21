@@ -21,7 +21,9 @@ if (result.code==krkrsvchk.FORMAT_ERROR)
 if (result.code==krkrsvchk.PARSE_ERROR)
   console.log('Failed to parse. '+filename+' may contain scripts.');
 if (result.code==krkrsvchk.MACRO)
-  console.log(filename+' contain macros.');
+  console.log(filename+' contains macros.');
+if (result.code==krkrsvchk.THUMBNAIL)
+  console.log(filename+' contains a thumbnail. Save data with a thumbnail are not supported');
 
 console.log('[detail]');
 console.log(result.detail);

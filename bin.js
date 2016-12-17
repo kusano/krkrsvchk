@@ -1,3 +1,5 @@
+#!node
+
 var krkrsvchk = require('./krkrsvchk');
 var fs = require('fs');
 

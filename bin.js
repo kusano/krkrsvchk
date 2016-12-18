@@ -1,4 +1,4 @@
-#!node
+#!/usr/bin/env node
 
 var krkrsvchk = require('./krkrsvchk');
 var fs = require('fs');
